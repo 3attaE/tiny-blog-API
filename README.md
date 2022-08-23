@@ -1,9 +1,61 @@
 # tiny-blog-API
 A tiny blog backend server demo
 
+## API 文档
+
 ## Quick Start
 
-## API 文档
+### Docker 部署
+
+### 本地部署
+
+测试登录用户名 `test` 密码 `test`
+
+#### step 1
+
+准备数据库
+
+导入 `DDL.sql` 到 MySQL
+
+#### step 2
+
+复制 `/src/main/resources/application.properties.demo` 为 `application.properties`
+
+#### step 3
+
+补充 MySQL 和 Redis 链接信息
+
+### step 4
+
+在项目主文件夹下 `mvn package`
+
+### step 5
+
+`cd target && java -jar tiny-blog-api-0.0.1-SNAPSHOT.jar`
+
+
+## 系统设计
+
+### 技术选型
+
+- SpringBoot 2.7.3
+- MySQL 5.7.36
+- Redis 7.0.4
+
+### 登录模块
+
+采用 JSON web Token 鉴权。
+
+其余 HTTP 请求携带 Authorization Token 可通过权限验证。
+
+### 缓存组件
+
+1. 文章点赞使用 Redis Key-Value 实现，使用定时任务每小时同步到 MySQL 保证相应记录保证数据最终一致。
+2. 博客首页展示最新10条发布的博客，新增博客记录时删除 Redis 缓存，下一次读取时更新缓存。
+
+### 全文索引
+
+利用 MySQL 2.7.6 版本之后的全文索引功能
 
 ## 实现如下功能
 
