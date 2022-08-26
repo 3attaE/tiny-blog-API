@@ -221,6 +221,8 @@
 |title|String|标题|
 |content|String|内容|
 |starNum|Integer|点赞数|
+|createId|Long|创建者ID|
+|updateId|Long|更新者ID|
 |creatTime|Integer|创建时间戳|
 |updateTime|Integer|更新时间戳|
 
@@ -235,8 +237,10 @@
           "title": "title",
           "content": "content",
           "starNum": 1234,
+          "createId": 1234,
+          "updateId": 1234,
           "creatTime": 1234,
-          "updateTime": 1234,
+          "updateTime": 123
         }
       ],
       "total": 10
@@ -305,7 +309,7 @@
 ```JSON
 {
   "postId": 1234,
-  "starType": 1,
+  "starType": 1
 }
 ```
 
@@ -314,7 +318,7 @@
 ```JSON
 {
   "code": 0,
-  "message": "success",
+  "message": "success"
 }
 ```
 
@@ -352,6 +356,8 @@
 |title|String|标题|
 |content|String|内容|
 |starNum|Integer|点赞数|
+|createId|Long|创建者ID|
+|updateId|Long|更新者ID|
 |creatTime|Integer|创建时间戳|
 |updateTime|Integer|更新时间戳|
 
@@ -360,17 +366,19 @@
   "code": 0,
   "message": "success",
   "data": {
-      "list": [
-        {
-          "postId": 123,
-          "title": "title",
-          "content": "content",
-          "starNum": 1234,
-          "creatTime": 1234,
-          "updateTime": 1234,
-        }
-      ],
-      "total": 10
+    "list": [
+      {
+        "postId": 123,
+        "title": "title",
+        "content": "content",
+        "starNum": 1234,
+        "createId": 1234,
+        "updateId": 1234,
+        "creatTime": 1234,
+        "updateTime": 123
+      }
+    ],
+    "total": 10
   }
 }
 ```
