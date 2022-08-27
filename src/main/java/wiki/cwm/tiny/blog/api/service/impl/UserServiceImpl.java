@@ -57,7 +57,7 @@ public class UserServiceImpl implements IUserService {
         }
 
         String s = redisDao.get(Constants.TOKEN_PREFIX + userId);
-        if (StringUtils.isEmpty(s)) {
+        if (StringUtils.isEmpty(s) || !s.equals(token)) {
             throw new ServiceException(ExceptionEnum.LOGIN_TOKEN_ERROR);
         }
 
