@@ -1,0 +1,20 @@
+server.port=8081
+auth0.jwt.secret=secret
+
+# application.properties
+mybatis.type-aliases-package=wiki.cwm.tiny.blog.api.dao.mysql.entity
+mybatis.mapper-locations=classpath*:mapperxml/**/*.xml
+mybatis.configuration.map-underscore-to-camel-case=true
+mybatis.configuration.default-fetch-size=100
+mybatis.configuration.default-statement-timeout=30
+
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+
+spring.redis.database=0
+spring.redis.host=
+spring.redis.port=
+spring.redis.password=
+spring.redis.timeout=60000

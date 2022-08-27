@@ -1,6 +1,7 @@
 package wiki.cwm.tiny.blog.api.service.impl;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import wiki.cwm.tiny.blog.api.common.StarTypeEnum;
 import wiki.cwm.tiny.blog.api.dao.mysql.entity.BlogPost;
@@ -24,8 +25,8 @@ class PostServiceImplTest {
     private static DummyPostMapper postMapper;
     private static DummyCommentMapper commentMapper;
 
-    @BeforeAll
-    public static void init() {
+    @BeforeEach
+    public void init() {
         redisDao = new DummyRedisDao();
         postMapper = new DummyPostMapper();
         commentMapper = new DummyCommentMapper();
@@ -71,6 +72,7 @@ class PostServiceImplTest {
     public void test_comment_success() {
         CommentBO bo = new CommentBO();
         bo.setPostId(1L);
+        bo.setComment("");
         Long comment = postService.comment(bo);
         assertThat(comment).isEqualTo(1L);
     }

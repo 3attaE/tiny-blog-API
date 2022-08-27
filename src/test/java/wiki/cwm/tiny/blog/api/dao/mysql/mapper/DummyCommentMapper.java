@@ -15,6 +15,7 @@ public class DummyCommentMapper implements BlogCommentMapper{
 
     @Override
     public Long insertSelective(BlogComment record) {
+        record.setId(1L);
         return record.getId();
     }
 

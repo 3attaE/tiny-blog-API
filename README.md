@@ -5,8 +5,6 @@ A tiny blog backend server demo
 
 ## Quick Start
 
-### Docker 部署
-
 ### 本地部署
 
 测试登录用户名 `test` 密码 `test`
@@ -59,11 +57,11 @@ A tiny blog backend server demo
 
 ## 实现如下功能
 
-- [ ] 登录/退出
-- [ ] 发布/修改文章
-- [ ] 文章列表
-- [ ] 文章评论
-- [ ] 文章点赞
-- [ ] 全文搜索
+- [*] 登录/退出
+- [*] 发布/修改文章
+- [*] 文章列表
+- [*] 文章评论
+- [*] 文章点赞
+- [*] 全文搜索
 
 
