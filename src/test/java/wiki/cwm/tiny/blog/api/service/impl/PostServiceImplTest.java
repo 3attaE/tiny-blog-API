@@ -1,6 +1,5 @@
 package wiki.cwm.tiny.blog.api.service.impl;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import wiki.cwm.tiny.blog.api.common.StarTypeEnum;
