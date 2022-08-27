@@ -2,10 +2,11 @@
 
 ## 说明
 
-- 接口鉴权
+- Header
 
 标注的接口需携带 `Authorization` Token
 
+所有接口需携带 `Content-Type: application/json`
 - 成功返回
 ```JSON
 {
@@ -182,7 +183,7 @@
   "code": 0,
   "message": "success",
   "data": {
-    "postId": "文章ID"
+    "postId": 1234
   }
 }
 ```
@@ -282,7 +283,7 @@
   "code": 0,
   "message": "success",
   "data": {
-    "commentId": "文章ID"
+    "commentId": 1234
   }
 }
 ```
@@ -304,7 +305,7 @@
 |字段|类型|备注|是否必传|
 |--|--|--|--|
 |postId|Long|文章ID|是|
-|starType|Inteher|点赞类型 1-点赞 2-取消点赞|是|
+|starType|Integer|点赞类型 1-点赞 2-取消点赞|是|
 
 ```JSON
 {
@@ -377,8 +378,7 @@
         "creatTime": 1234,
         "updateTime": 123
       }
-    ],
-    "total": 10
+    ]
   }
 }
 ```

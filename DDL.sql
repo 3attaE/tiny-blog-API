@@ -24,6 +24,8 @@ CREATE TABLE blog_user
 		primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '博客用户表';
 
+CREATE INDEX idx_username_password ON blog_user (username,password);
+
 CREATE TABLE blog_comment
 (
 	id bigint auto_increment comment '评论id',
