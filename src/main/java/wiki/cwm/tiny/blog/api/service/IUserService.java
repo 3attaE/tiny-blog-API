@@ -1,5 +1,7 @@
 package wiki.cwm.tiny.blog.api.service;
 
+import wiki.cwm.tiny.blog.api.service.bo.UserBO;
+
 public interface IUserService {
 
     /**

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import wiki.cwm.tiny.blog.api.common.ExceptionEnum;
+import wiki.cwm.tiny.blog.api.common.ServiceException;
 
 @Data
 @AllArgsConstructor
@@ -28,6 +29,10 @@ public class Result<T> {
 
     public static <T> Result<T> fail(ExceptionEnum exceptionEnum, String message) {
         return new Result<>(exceptionEnum.getCode(), message,null);
+    }
+
+    public static <T> Result<T> failFromException(ServiceException e) {
+        return Result.fail(e.getCode(),e.getMessage());
     }
 
 }

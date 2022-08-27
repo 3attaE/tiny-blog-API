@@ -2,6 +2,7 @@ package wiki.cwm.tiny.blog.api.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import wiki.cwm.tiny.blog.api.common.GsonUtils;
 import wiki.cwm.tiny.blog.api.dto.LoginReq;
@@ -17,7 +18,7 @@ public class UserController {
 
     @PostMapping("login")
     public Result<LoginResp> login(@RequestBody LoginReq req) {
-        log.info("{}.{}",req.getUsername(), req.getPassword());
+
         return null;
     }
 
