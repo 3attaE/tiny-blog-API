@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 class UserServiceImplTest {
     private static UserServiceImpl userService;
     private static DummyAuthService authService;
-    private static DummyRedisDao<String> redisDao;
+    private static DummyRedisDao redisDao;
 
     @BeforeAll
     public static void init() {
         authService = new DummyAuthService();
-        redisDao = new DummyRedisDao<String>();
+        redisDao = new DummyRedisDao();
         userService = new UserServiceImpl(authService, new DummyBlogUserMapper(), redisDao);
     }
 

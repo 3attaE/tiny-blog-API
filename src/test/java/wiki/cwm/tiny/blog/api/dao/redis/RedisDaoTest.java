@@ -14,8 +14,8 @@ class RedisDaoTest {
 
     @Test
     public void test_redis() {
-        redisDao.set("test:key", 1);
-        assertThat(redisDao.get("test:key")).isEqualTo(1);
+        redisDao.set("test:key", "1");
+        assertThat(redisDao.get("test:key")).isEqualTo("1");
     }
 
 

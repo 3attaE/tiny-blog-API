@@ -48,9 +48,10 @@ A tiny blog backend server demo
 
 已标注的 HTTP 请求携带 Authorization Token 可通过权限验证。
 
-### 缓存组件
+### 缓存方案
 
-1. 文章点赞使用 Redis Key-Value 实现，定时任务每小时同步到 MySQL 保证相应记录数据最终一致性。
+缓存点赞数，当数值更新时，删除对应 Key。
+访问 Key 若为 null，从 MySQL 记录中同步最新点赞数。
 
 ### 全文索引
 

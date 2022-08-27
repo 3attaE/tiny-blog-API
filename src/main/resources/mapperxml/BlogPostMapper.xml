@@ -149,8 +149,25 @@
     </where>
   </select>
 
-  <select id="selectAll" resultMap="BaseResultMap">
-    select * from blog_post;
+  <select id="iteratorAll" resultMap="BaseResultMap">
+    select * from blog_post
+    <where>
+        <if test="cursor != null ">
+          id > #{cursor}
+        </if>
+    </where>
+    limit #{limit}
   </select>
 
+  <update id="incrStarNum" >
+
+    update blog_post set star_num = star_num + 1
+    where id = #{id}
+
+  </update>
+
+  <update id="decrStarNum" >
+    update blog_post set star_num = star_num - 1
+    where id = #{id} and star_num > 0
+  </update>
 </mapper>

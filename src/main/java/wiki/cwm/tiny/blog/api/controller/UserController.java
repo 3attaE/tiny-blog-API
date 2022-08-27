@@ -51,6 +51,7 @@ public class UserController {
             userService.logout(requestContext.getHeader("Authorization"));
             return Result.success(null);
         }catch (Exception e) {
+            log.error("logout error", e);
             return Result.failFromException(e);
         }
     }

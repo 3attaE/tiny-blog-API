@@ -4,7 +4,7 @@ import wiki.cwm.tiny.blog.api.common.ServiceException;
 import wiki.cwm.tiny.blog.api.service.bo.CommentBO;
 import wiki.cwm.tiny.blog.api.service.bo.ListBO;
 import wiki.cwm.tiny.blog.api.service.bo.PostBO;
-import wiki.cwm.tiny.blog.api.service.bo.StartBO;
+import wiki.cwm.tiny.blog.api.service.bo.StarBO;
 
 import java.util.List;
 
@@ -48,9 +48,9 @@ public interface IPostService {
 
     /**
      * 点赞
-     * @param startBO
+     * @param starBO
      * @throws ServiceException
      */
-    void star(StartBO startBO) throws ServiceException;
+    void star(StarBO starBO) throws ServiceException;
 
 }

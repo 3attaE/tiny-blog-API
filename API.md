@@ -305,7 +305,7 @@
 |字段|类型|备注|是否必传|
 |--|--|--|--|
 |postId|Long|文章ID|是|
-|starType|Inteher|点赞类型 1-点赞 2-取消点赞|是|
+|starType|Integer|点赞类型 1-点赞 2-取消点赞|是|
 
 ```JSON
 {

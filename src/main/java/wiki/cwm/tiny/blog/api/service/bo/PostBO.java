@@ -1,6 +1,7 @@
 package wiki.cwm.tiny.blog.api.service.bo;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import wiki.cwm.tiny.blog.api.dao.mysql.entity.BlogPost;
 import wiki.cwm.tiny.blog.api.dto.PostDTO;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Data
+@NoArgsConstructor
 public class PostBO {
 
     /**
@@ -59,7 +61,16 @@ public class PostBO {
         this.setUpdateId(blogPost.getUpdateId());
         this.setCreateTime(blogPost.getCreateTime().toInstant().getEpochSecond());
         this.setUpdateTime(blogPost.getUpdateTime().toInstant().getEpochSecond());
+    }
 
+    public PostBO(PostDTO postDTO) {
+        if (Objects.nonNull(postDTO.getId())) {
+            this.setId(postDTO.getId());
+        }
+        this.setTitle(postDTO.getTitle());
+        this.setContent(postDTO.getContent());
+        this.setCreateId(postDTO.getCreateId());
+        this.setUpdateId(postDTO.getUpdateId());
     }
 
     public BlogPost toDAO() {
@@ -76,13 +87,20 @@ public class PostBO {
             blogPost.setCreateId(this.createId);
         }
         if (Objects.nonNull(this.updateId)) {
-            blogPost.setCreateId(this.updateId);
+            blogPost.setUpdateId(this.updateId);
         }
         return blogPost;
     }
 
     public PostDTO toDTO() {
         PostDTO dto = new PostDTO();
+        dto.setId(this.id);
+        dto.setTitle(this.title);
+        dto.setContent(this.getContent());
+        dto.setCreateId(this.createId);
+        dto.setUpdateId(this.updateId);
+        dto.setCreateTime(this.createTime);
+        dto.setUpdateTime(this.updateTime);
         return dto;
     }
 

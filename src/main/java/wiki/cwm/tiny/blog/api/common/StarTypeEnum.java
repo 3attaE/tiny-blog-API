@@ -8,7 +8,7 @@ public enum StarTypeEnum {
      */
     INCR,DECR;
 
-    public StarTypeEnum valueOfCode(Integer code) {
+    public static StarTypeEnum valueOfCode(Integer code) {
         switch (code) {
             case 1:
                 return INCR;

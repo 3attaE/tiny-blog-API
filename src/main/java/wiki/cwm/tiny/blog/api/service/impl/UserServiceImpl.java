@@ -1,7 +1,9 @@
 package wiki.cwm.tiny.blog.api.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import wiki.cwm.tiny.blog.api.common.Constants;
 import wiki.cwm.tiny.blog.api.common.ExceptionEnum;
 import wiki.cwm.tiny.blog.api.common.Md5Utils;
 import wiki.cwm.tiny.blog.api.common.ServiceException;
@@ -18,11 +20,10 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class UserServiceImpl implements IUserService {
 
-    private static final String TOKEN_PREFIX = "user::token::";
 
     private final IAuthService authService;
     private final BlogUserMapper userMapper;
-    private final RedisDao<String> redisDao;
+    private final RedisDao redisDao;
 
     public UserServiceImpl(IAuthService authService, BlogUserMapper userMapper, RedisDao redisDao) {
         this.authService = authService;
@@ -40,7 +41,7 @@ public class UserServiceImpl implements IUserService {
         }
 
         String token = authService.generate(blogUser.getId().toString());
-        redisDao.setWithExpire(TOKEN_PREFIX + blogUser.getId(), token, 30, TimeUnit.MINUTES);
+        redisDao.setWithExpire(Constants.TOKEN_PREFIX + blogUser.getId(), token, 30, TimeUnit.MINUTES);
         return token;
     }
 
@@ -55,8 +56,8 @@ public class UserServiceImpl implements IUserService {
             throw e;
         }
 
-        String s = redisDao.get(TOKEN_PREFIX + userId);
-        if (Objects.isNull(s) || !s.equals(token)) {
+        String s = redisDao.get(Constants.TOKEN_PREFIX + userId);
+        if (StringUtils.isEmpty(s)) {
             throw new ServiceException(ExceptionEnum.LOGIN_TOKEN_ERROR);
         }
 
@@ -68,7 +69,7 @@ public class UserServiceImpl implements IUserService {
         Long userId = null;
         try {
             userId = authService.verify(token);
-            redisDao.del(TOKEN_PREFIX + userId);
+            redisDao.del(Constants.TOKEN_PREFIX + userId);
         } catch (ServiceException e) {
             log.error("delete token {} userId {}", token, userId, e);
         } catch (Exception e) {

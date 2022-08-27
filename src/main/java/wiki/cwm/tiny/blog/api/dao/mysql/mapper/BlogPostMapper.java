@@ -72,6 +72,23 @@ public interface BlogPostMapper {
     /**
      * 全量查询
      * @return
+     * @param id
+     * @param limit
      */
-    List<BlogPost> selectAll();
+    List<BlogPost> iteratorAll(@Param("cursor") Long cursor, @Param("limit") Integer limit);
+
+    /**
+     * 点增加赞数
+     * @param id
+     * @return
+     */
+    int incrStarNum(@Param("id") Long id);
+
+    /**
+     * 减少点赞数
+     * @param id
+     * @return
+     */
+    int decrStarNum(@Param("id") Long id);
+
 }
