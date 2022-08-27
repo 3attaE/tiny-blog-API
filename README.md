@@ -3,6 +3,8 @@ A tiny blog backend server demo
 
 ## API 文档
 
+[文档链接](https://github.com/3attaE/tiny-blog-API/blob/main/API.md)
+
 ## Quick Start
 
 ### 本地部署
