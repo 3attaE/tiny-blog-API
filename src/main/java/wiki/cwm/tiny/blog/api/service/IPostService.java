@@ -2,6 +2,7 @@ package wiki.cwm.tiny.blog.api.service;
 
 import wiki.cwm.tiny.blog.api.common.ServiceException;
 import wiki.cwm.tiny.blog.api.service.bo.CommentBO;
+import wiki.cwm.tiny.blog.api.service.bo.ListBO;
 import wiki.cwm.tiny.blog.api.service.bo.PostBO;
 import wiki.cwm.tiny.blog.api.service.bo.StartBO;
 
@@ -29,7 +30,7 @@ public interface IPostService {
      * @param limit
      * @return
      */
-    List<PostBO> list(Integer offset, Integer limit);
+    ListBO list(Integer offset, Integer limit);
 
     /**
      * 搜索

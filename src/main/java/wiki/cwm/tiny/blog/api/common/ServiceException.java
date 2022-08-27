@@ -17,4 +17,9 @@ public class ServiceException extends RuntimeException{
         this.code = exceptionEnum.getCode();
     }
 
+    public ServiceException(String message) {
+        super(message);
+        this.code = ExceptionEnum.INTERNAL_SERVER_ERROR.getCode();
+    }
+
 }

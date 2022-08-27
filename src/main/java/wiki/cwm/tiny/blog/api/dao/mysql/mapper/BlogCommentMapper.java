@@ -15,14 +15,14 @@ public interface BlogCommentMapper {
      * @param record
      * @return
      */
-    int insert(BlogComment record);
+    Long insert(BlogComment record);
 
     /**
      * 选择性插入
      * @param record
      * @return
      */
-    int insertSelective(BlogComment record);
+    Long insertSelective(BlogComment record);
 
     /**
      * 根据主键查找记录
@@ -36,12 +36,12 @@ public interface BlogCommentMapper {
      * @param record
      * @return
      */
-    int updateByPrimaryKeySelective(BlogComment record);
+    Long updateByPrimaryKeySelective(BlogComment record);
 
     /**
      * 更新
      * @param record
      * @return
      */
-    int updateByPrimaryKey(BlogComment record);
+    Long updateByPrimaryKey(BlogComment record);
 }

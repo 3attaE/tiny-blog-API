@@ -128,4 +128,29 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByLimit" resultMap="BaseResultMap">
+    select *
+    from blog_post
+    limit #{limit} offset #{offset}
+  </select>
+
+  <select id="count" resultType="java.lang.Long">
+    select count(*)
+    from blog_post;
+  </select>
+
+  <select id="selectByKeywords" resultMap="BaseResultMap">
+    select * from
+      blog_post
+    <where>
+      match (title, content)
+      against (#{keywords})
+    </where>
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from blog_post;
+  </select>
+
 </mapper>

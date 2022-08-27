@@ -30,4 +30,11 @@ public class RedisDao<T> {
         redisTemplate.delete(key);
     }
 
+    public void incr(String key) {
+        redisTemplate.opsForValue().increment(key);
+    }
+
+    public void decr(String key) {
+        redisTemplate.opsForValue().decrement(key);
+    }
 }

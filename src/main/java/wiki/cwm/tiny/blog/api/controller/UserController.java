@@ -2,12 +2,12 @@ package wiki.cwm.tiny.blog.api.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import wiki.cwm.tiny.blog.api.common.GsonUtils;
 import wiki.cwm.tiny.blog.api.dto.LoginReq;
 import wiki.cwm.tiny.blog.api.dto.LoginResp;
 import wiki.cwm.tiny.blog.api.dto.Result;
+import wiki.cwm.tiny.blog.api.service.IUserService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,9 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class UserController {
 
+    private final IUserService userService;
+
+    public UserController(IUserService userService) {
+        this.userService = userService;
+    }
+
     @PostMapping("login")
     public Result<LoginResp> login(@RequestBody LoginReq req) {
-
         return null;
     }
 

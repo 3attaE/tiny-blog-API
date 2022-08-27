@@ -1,6 +1,9 @@
 package wiki.cwm.tiny.blog.api.dao.mysql.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import wiki.cwm.tiny.blog.api.dao.mysql.entity.BlogPost;
+
+import java.util.List;
 
 public interface BlogPostMapper {
     /**
@@ -15,14 +18,14 @@ public interface BlogPostMapper {
      * @param record
      * @return
      */
-    int insert(BlogPost record);
+    Long insert(BlogPost record);
 
     /**
      * 选择性插入
      * @param record
      * @return
      */
-    int insertSelective(BlogPost record);
+    Long insertSelective(BlogPost record);
 
     /**
      * 根据主键查找记录
@@ -36,13 +39,39 @@ public interface BlogPostMapper {
      * @param record
      * @return
      */
-    int updateByPrimaryKeySelective(BlogPost record);
+    Long updateByPrimaryKeySelective(BlogPost record);
 
     /**
      * 更新
      * @param record
      * @return
      */
-    int updateByPrimaryKey(BlogPost record);
+    Long updateByPrimaryKey(BlogPost record);
 
+    /**
+     * 分页查询
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<BlogPost> selectByLimit(@Param("offset") Integer offset, @Param("limit") Integer limit);
+
+    /**
+     * 总量
+     * @return
+     */
+    Long count();
+
+    /**
+     * 全文查询
+     * @param keywords
+     * @return
+     */
+    List<BlogPost> selectByKeywords(@Param("keywords") String keywords);
+
+    /**
+     * 全量查询
+     * @return
+     */
+    List<BlogPost> selectAll();
 }
