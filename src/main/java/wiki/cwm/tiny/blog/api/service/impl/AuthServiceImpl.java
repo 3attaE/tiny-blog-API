@@ -14,7 +14,6 @@ import wiki.cwm.tiny.blog.api.common.ServiceException;
 import wiki.cwm.tiny.blog.api.service.IAuthService;
 
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -24,19 +23,10 @@ public class AuthServiceImpl implements IAuthService {
     @Value("${auth0.jwt.secret}")
     private String secret;
 
-    private Algorithm algorithm;
-
-    public AuthServiceImpl() {
-        algorithm = Algorithm.HMAC256(this.secret);
-    }
-
-    public AuthServiceImpl(String secret) {
-        algorithm = Algorithm.HMAC256(secret);
-    }
-
     @Override
     public Long verify(String s) throws ServiceException {
         try {
+            Algorithm algorithm = algorithm = Algorithm.HMAC256(secret);
             JWTVerifier verifier = JWT.require(algorithm)
                                       .withIssuer("blog")
                                       .build();
@@ -60,11 +50,16 @@ public class AuthServiceImpl implements IAuthService {
         return token;
     }
 
-    public String generateWithTime(String userId, Long time) {
+    protected String generateWithTime(String userId, Long time) {
+        Algorithm algorithm = algorithm = Algorithm.HMAC256(secret);
         return JWT.create()
            .withIssuer("blog")
            .withClaim("userId", userId)
            .withExpiresAt(Instant.now().plusMillis(time))
            .sign(algorithm);
+    }
+
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 }

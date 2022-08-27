@@ -35,4 +35,8 @@ public class Result<T> {
         return Result.fail(e.getCode(),e.getMessage());
     }
 
+    public static <T> Result<T> failFromException(ExceptionEnum e) {
+        return Result.fail(ExceptionEnum.INTERNAL_SERVER_ERROR,e.getMessage());
+    }
+
 }

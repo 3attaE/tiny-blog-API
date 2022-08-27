@@ -6,15 +6,11 @@ public interface IAuthService {
 
     /**
      * 校验 token
-     * @param s
      */
     Long verify(String s) throws ServiceException;
 
     /**
-     *
-     * @param username
-     * @param password
-     * @return
+     * 生成 token
      */
     String generate(String userId) throws ServiceException;
 }
