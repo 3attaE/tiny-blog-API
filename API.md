@@ -57,13 +57,14 @@
 
 - success
 
+jwt token in response Cookie
+
+`Cookie: jwt=xxxx`
+
 ```JSON
 {
   "code": 0,
-  "message": "success",
-  "data": {
-    "token": "xxxx"
-  }
+  "message": "success"
 }
 ```
 
@@ -217,7 +218,7 @@
 - success
 
 |字段|类型|备注|
-|--|--|--|--|
+|--|--|--|
 |postId|Long|文章ID|
 |title|String|标题|
 |content|String|内容|
