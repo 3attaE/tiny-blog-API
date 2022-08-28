@@ -1,13 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM eclipse-temurin:8-jdk-jammy
+FROM openjdk:8-jdk-alpine
 
-WORKDIR /app
+ARG JAR_FILE=target/*.jar
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:resolve
+COPY ${JAR_FILE} app.jar
 
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
+ENTRYPOINT ["java","-jar","/app.jar"]
